@@ -1,0 +1,60 @@
+create database projetojava;
+use projetojava;
+CREATE TABLE usuario (
+id BIGINT(10) AUTO_INCREMENT,
+nome VARCHAR(255),
+cpf VARCHAR(255),
+email VARCHAR(255),
+telefone VARCHAR(255),
+habilidade VARCHAR(255),
+PRIMARY KEY (id)
+);
+
+
+CREATE TABLE cliente (
+id BIGINT(10) AUTO_INCREMENT,
+nome VARCHAR(255),
+cpf VARCHAR(255),
+email VARCHAR(255),
+telefone VARCHAR(255),
+endereco VARCHAR(255),
+datanascimento VARCHAR(255),
+PRIMARY KEY (id)
+);
+
+CREATE TABLE solserv (
+id BIGINT(10) AUTO_INCREMENT,
+idcliente BIGINT(10),
+habilidade VARCHAR(255),
+descricao VARCHAR(255),
+datasolicitacao VARCHAR(255),
+status VARCHAR(255),
+idfuncionario BIGINT(10),
+numhoras DECIMAL(10,2),
+valorhora DECIMAL(10,2),
+validade BIGINT(10),
+aprovado VARCHAR(3),
+soma DECIMAL(10,2),
+vencimento BIGINT(10),
+dataencerramento VARCHAR(255),
+PRIMARY KEY (id)
+);
+
+CREATE TABLE pecas (
+id BIGINT(10) AUTO_INCREMENT,
+idos BIGINT(10),
+descricao VARCHAR(255),
+quantidade DECIMAL(10,2),
+valor DECIMAL(10,2),
+PRIMARY KEY (id)
+);
+
+CREATE TABLE fatura (
+id BIGINT(10) AUTO_INCREMENT,
+idos BIGINT(10),
+valor DECIMAL(10,2),
+formapagamento VARCHAR(255), 
+instituicao VARCHAR(255),
+PRIMARY KEY (id)
+);
+
