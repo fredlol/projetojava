@@ -1,11 +1,10 @@
 package modelo;
-public class Cliente extends Pessoa{
 
+//herda atributos e métodos da superclasse Pessoa e implementa o atributos e método diferentes
+public class Cliente extends Pessoa{
 
     String datanascimento;
     String endereco;
-
-
     
     public void setEndereco(String endereco) {
         this.endereco = endereco;
@@ -23,6 +22,4 @@ public class Cliente extends Pessoa{
         this.datanascimento = datanascimento;
     }    
     
-    
-  
 }
