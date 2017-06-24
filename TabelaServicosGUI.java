@@ -1,3 +1,6 @@
+/*
+Classes GUI (Graphical User Interface ou Interface Gráfica de Usuário)
+*/
 
 package gui;
 
@@ -11,6 +14,7 @@ import javax.swing.table.*;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
+//aqui se declara uma jtable para poder criar a mesma “na mão”:
 public class TabelaServicosGUI extends javax.swing.JFrame {
     private Connection connection;
     String FuncionarioLogado;
@@ -21,21 +25,20 @@ public class TabelaServicosGUI extends javax.swing.JFrame {
     public TabelaServicosGUI() {         
     super("JTable");		
      initComponents();
-
     }
   /*----------------------------------------------------------------------*/
     
-    
+    // Esse método vai inserir o valor que é recebido pelo parâmetro.  
 /*----------------------------------------------------------------------*/    
-    public void campoRecebe(String Txt){  // Esse método vai inserir o valor que é recebido pelo parâmetro.  
-    String FuncionarioLogado = Txt; // e inserir em um campo de texto jTextField.  
+    public void campoRecebe(String Txt){      
+String FuncionarioLogado = Txt; // e inserir em um campo de texto jTextField.  
     
     final DefaultTableModel modelo = new DefaultTableModel();    
     // constrói a tabela
     JTable tabela = new JTable(modelo);
    
     
-    // Cria duas colunas
+    // Cria as colunas
     modelo.addColumn("id");
     modelo.addColumn("idcliente");
     modelo.addColumn("habilidade");
@@ -51,7 +54,7 @@ public class TabelaServicosGUI extends javax.swing.JFrame {
     //String sql = "SELECT * FROM solserv";
     String sql = "SELECT A.* FROM solserv A, usuario B WHERE A.habilidade = B.habilidade AND B.nome = '" + FuncionarioLogado + "'"; 
 
-    // exibe os dados da tabela MySQL
+    // procura as OS relacionadas a função do funcionário logado e vai inserindo nas linhas da tabela do formulário:
      try {
         PreparedStatement stmt = connection.prepareStatement(sql);  
         ResultSet rs = stmt.executeQuery();
@@ -86,6 +89,7 @@ public class TabelaServicosGUI extends javax.swing.JFrame {
     }
     // fim MySQL
     
+//dimensiona as colunas da tabela do formulário:
     tabela.setPreferredScrollableViewportSize(new Dimension(1300, 400));
     tabela.getColumnModel().getColumn(0).setPreferredWidth(50); 
     tabela.getColumnModel().getColumn(1).setPreferredWidth(50);
@@ -113,79 +117,29 @@ public class TabelaServicosGUI extends javax.swing.JFrame {
     aux = tabela;
     }  
 /*----------------------------------------------------------------------*/
-
-
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
-        jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        jButton1.setText("Seleciona OS");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(270, 270, 270)
-                .addComponent(jButton1)
-                .addContainerGap(271, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(125, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(29, 29, 29))
-        );
-
-        pack();
-    }// </editor-fold>//GEN-END:initComponents
-
-    
+/*
+Chama a interface OrdemServicoGUI passando por parâmetro o id do funcionário e da OS selecionada através da linha/coluna da tabela:
+*/
+	
   /*----------------------------------------------------------------------*/
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         int linhaSel = aux.getSelectedRow();     
        int colunaSel = aux.getSelectedColumn();  
            Long idOS, idFunc;
        idOS = Long.parseLong(aux.getValueAt(linhaSel, 0).toString());
-       idFunc= Long.parseLong(aux.getValueAt(linhaSel, 5).toString());
-       //JOptionPane.showMessageDialog(null, idOS ); 
-       //JOptionPane.showMessageDialog(null, idFunc);
-       
+       idFunc= Long.parseLong(aux.getValueAt(linhaSel, 5).toString());       
       OrdemServicoGUI janelaPrincipal = new OrdemServicoGUI(); //faz a instancia   
      janelaPrincipal.campoRecebe(idOS, idFunc); // Chama o método que está na 'janelaPrincipal' 
      
-    //OrdemServicoGUI janela = (OrdemServicoGUI)this.jframe; // Aqui acontece toda mágica, e feito um CAST(é isso pessoal ?)  
+    //OrdemServicoGUI janela = (OrdemServicoGUI)this.jframe; // Aqui acontece toda mágica, e feito um CAST
      
     dispose(); 
     janelaPrincipal.setVisible(true); // mostra a janelaPrincipal 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }                                        
 /*----------------------------------------------------------------------*/
-    
-    
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration                   
 }
+
