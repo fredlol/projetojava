@@ -3,6 +3,7 @@ package modelo;
 import java.util.Date;
 
 public class SolServ {
+    //atributos
     Long id;
     Long idcliente ;
     String habilidade;
@@ -19,6 +20,7 @@ public class SolServ {
     Long vencimento;
     String dataencerramento;
 
+    //métodos para acessar os atributos (setando ou recebendo valor)
     
     public String getDataEncerramento() {
         return dataencerramento;
@@ -27,9 +29,6 @@ public class SolServ {
     public void setDataEncerramento(String dataencerramento) {
         this.dataencerramento = dataencerramento;
     }
-
-
-    
     public Long getId() {
         return id;
     }
