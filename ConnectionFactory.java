@@ -6,7 +6,7 @@ import java.sql.DriverManager; // driver de conexão SQL para Java
 import java.sql.SQLException; // classe para tratamento de exceções
 
 
-
+//estabelece conexão com o banco mysql
 public class ConnectionFactory {
     public Connection getConnection() {
         try {
