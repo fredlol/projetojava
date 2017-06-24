@@ -1,5 +1,6 @@
 package modelo;
 public class Fatura {
+    //atributos
     Long id;
     Long idOS;
     Double valor;
@@ -7,9 +8,10 @@ public class Fatura {
     String instituicao;
     
     public Fatura(){
+     //inicializa com 0 o id da fatura no construtor
     this.id=0l;
     }
-    
+    //métodos para acessar os atributos (setando ou recebendo valor)
     public Long getId() {
         return id;
     }
