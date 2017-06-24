@@ -1,12 +1,13 @@
 package modelo;
 public class Pecas {
+    //atributos
     Long id;
     Long idos;
     String descricao;
     Double valor;
     Double quantidade;
 
-
+    //métodos para acessar os atributos (setando ou recebendo valor)
     public Long getId() {
     return id;
     }
