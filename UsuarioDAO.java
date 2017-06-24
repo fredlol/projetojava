@@ -1,10 +1,26 @@
 package dao;
+/*
+Classes de Conexão DAO
+As conexões são com um banco de dados mysql.
+Todas conexões com o BD são inicializadas nos construtores da classe ( this.connection = new ConnectionFactory().getConnection())
+*/
 
 import factory.ConnectionFactory;
 import modelo.Usuario;
 import java.sql.*;
 import java.sql.PreparedStatement;
 import java.util.ArrayList; 
+
+/*
+Esta classe possui o procedimento “adiciona” para inserir os dados do funcionário no banco de dados,
+a função “getFuncionario” busca o funcionário pelo seu nome completo passado por parâmetro para a consulta SQL,
+o resultado é retornado um objeto do tipo funcionário.
+O procedimento excluiFuncionario exclui um funcionário cujo Nome completo foi passado por parâmetro.
+O procedimento alteraUsuario altera um funcionário cujo Nome completo foi passado por parâmetro.
+A função obterNomesTodosFuncs busca todos os funcionários pelo seu nome completo distintamente,
+o resultado é retornado por um ArrayList.
+Todas as funções e procedimentos possuem tratamento de erro genérico try- catch- throw de banco de dados. 
+*/
 
 public class UsuarioDAO {
     private Connection connection;
