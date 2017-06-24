@@ -1,11 +1,27 @@
 package dao;
-
+/*
+Classes de Conexão DAO
+As conexões são com um banco de dados mysql.
+Todas conexões com o BD são inicializadas nos construtores da classe ( this.connection = new ConnectionFactory().getConnection())
+*/
 import factory.ConnectionFactory;
 import modelo.SolServ;
 import java.sql.*;
 import java.sql.PreparedStatement;
 import java.util.ArrayList; 
 import java.util.Date;
+
+/*
+Esta classe possui o procedimento “adiciona” para inserir os dados da solicitação de serviço no banco de dados,
+a função “getSolicitacao” busca a solicitação de serviço/OS pelo seu identificador passado por parâmetro para a consulta SQL,
+o resultado é retornado para um objeto do tipo SolServ com a solicitação de serviço
+alem do nome do funcionário alocado (quando houver) e nome do cliente.
+A função obterListaDeHabilidades busca todas as habilidades(tipo de profissional) distintamente dos funcionários cadastrados,
+o resultado é retornado por um ArrayList.
+O procedimento alteraOS altera os dados de uma Ordem de Serviço cujo id foi passado por parâmetro junto com os dados a serem alterados.
+Todas as funções e procedimentos possuem tratamento de erro genérico try- catch- throw de banco de dados.
+Para preencher a lista de habilidades o “ResultSet rs” é feito um while que traz os resultados de cada linha para o ResultSet.
+*/
 
 public class SolServDAO {
     private Connection connection;
