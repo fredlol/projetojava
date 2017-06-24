@@ -1,10 +1,21 @@
 package dao;
-
+/*
+Classes de Conexão DAO
+As conexões são com um banco de dados mysql.
+Todas conexões com o BD são inicializadas nos construtores da classe ( this.connection = new ConnectionFactory().getConnection())
+*/
 import factory.ConnectionFactory;
 import modelo.Pecas;
 import java.sql.*;
 import java.sql.PreparedStatement;
 import java.util.ArrayList; 
+
+/*
+Esta classe possui o procedimento “adiciona” para inserir os dados das peças/materiais no banco de dados,
+a função “getSomaPecas” soma o valor das peças/materiais agrupando o mesmo pelo identificador da solicitação de serviço/OS,
+caso o retorno desta soma seja nulo(nenhum registro) o resultado retornado é 0.0, senão retorna um double com o valor da soma.
+Todas as funções e procedimentos possuem tratamento de erro genérico try- catch- throw de banco de dados. 
+*/
 
 public class PecasDAO {
     private Connection connection;
