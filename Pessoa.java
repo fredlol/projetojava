@@ -1,8 +1,9 @@
 
 package modelo;
 
-
+//Superclasse Pessoa
 public class Pessoa {
+    //atributos
     Long id;
     String nome;
     String cpf;
@@ -10,7 +11,7 @@ public class Pessoa {
     String telefone;
 
 public Pessoa() {  } 
-
+//métodos para acessar os atributos (setando ou recebendo valor)
     public String getCpf() {
         return cpf;
     }
